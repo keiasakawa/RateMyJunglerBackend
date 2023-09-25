@@ -37,4 +37,5 @@ router.get('/current-match/:id', function (req,res) {
     makeAPIRequest(`https://na1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/${id}?api_key=${config.API_KEY}`, res)
 })
 
+
 export default router;
