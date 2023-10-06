@@ -8,6 +8,6 @@ const ratingsSchema = new mongoose.Schema(
     }
 );
 
-const ratingsModel = mongoose.model('Ratings', ratingsScema);
+const ratingsModel = mongoose.model('Ratings', ratingsSchema);
 
 export default ratingsModel;
