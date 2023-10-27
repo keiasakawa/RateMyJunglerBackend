@@ -4,11 +4,9 @@ import * as ratingsService from '../services/ratings.service.js';
 const router = express.Router();
 
 router.get('/:id', async (req, res) => {
-    
-    var id = req.params.id;
     try {
-        console.log(id)
-        const allRatings = await ratingsService.getRatings(id);
+        const filter = {accountId: req.params.id, sortBy: req.query.sort}
+        const allRatings = await ratingsService.getRatings(filter);
         res.status(200).send(allRatings);
     } catch (err) {
         console.error(err);

@@ -9,6 +9,5 @@ router.get('/summoner/:name', function(req,res) {
     makeAPIRequest(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}?api_key=${config.API_KEY}`, res)
 })
 
-router.get('/')
 
 export default router;

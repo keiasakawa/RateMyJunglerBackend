@@ -1,12 +1,32 @@
 import mongoose from 'mongoose';
 import ratingsModel from '../models/ratings.schema.js';
 
-const getRatings = async (accountId) => {
-    return ratingsModel.find({ accountId: accountId });
+const getRatings = async (body) => {
+    const accountId = body.accountId
+    const getSort = body.sortBy
+    let order = 0;
+    let sortBy = ''
+    if (getSort == 'recent') {
+        order = -1
+        sortBy = 'datetime'
+    }
+    else if (getSort == 'oldest') {
+        order = 1
+        sortBy = 'datetime'
+    }
+    else if (getSort == 'highest') {
+        order = -1
+        sortBy = 'stars'
+    }
+    else {
+        order = 1
+        sortBy = 'stars'
+    }
+    console.log(sortBy, order)
+    return ratingsModel.find({ accountId: accountId }).sort({[sortBy]: order});
 }
 
 const postRating = async (rating) => {
-    console.log(rating)
     const createdRating = new ratingsModel({...rating})
     return createdRating.save();
 }
