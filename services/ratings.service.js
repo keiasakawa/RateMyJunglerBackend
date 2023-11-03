@@ -22,7 +22,6 @@ const getRatings = async (body) => {
         order = 1
         sortBy = 'stars'
     }
-    console.log(sortBy, order)
     return ratingsModel.find({ accountId: accountId }).sort({[sortBy]: order});
 }
 
