@@ -16,6 +16,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        console.log(req)
         const mongoResponse = await ratingsService.postRating(req.body);
         res.status(200).send(mongoResponse)
     } catch (err) {
