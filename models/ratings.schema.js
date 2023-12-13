@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const ratingsSchema = new mongoose.Schema(
     {
-        accountId : { type: String, required: true },
+        puuid : { type: String, required: true },
         stars: { type: Number, required: true },
         message: String,
         datetime: Date

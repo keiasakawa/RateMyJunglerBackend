@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import ratingsModel from '../models/ratings.schema.js';
 
 const getRatings = async (body) => {
-    const accountId = body.accountId
+    const puuid = body.puuid
     const getSort = body.sortBy
     let order = 0;
     let sortBy = ''
@@ -22,7 +22,7 @@ const getRatings = async (body) => {
         order = 1
         sortBy = 'stars'
     }
-    return ratingsModel.find({ accountId: accountId }).sort({[sortBy]: order});
+    return ratingsModel.find({ puuid: puuid }).sort({[sortBy]: order});
 }
 
 const postRating = async (rating) => {

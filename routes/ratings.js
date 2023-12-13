@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/:id', async (req, res) => {
     try {
-        const filter = {accountId: req.params.id, sortBy: req.query.sort}
+        const filter = {puuid: req.params.id, sortBy: req.query.sort}
         const allRatings = await ratingsService.getRatings(filter);
         res.status(200).send(allRatings);
     } catch (err) {
@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req)
+        console.log(req.body)
         const mongoResponse = await ratingsService.postRating(req.body);
         res.status(200).send(mongoResponse)
     } catch (err) {
